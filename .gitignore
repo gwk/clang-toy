@@ -1,0 +1,12 @@
+_bld/
+_misc/
+
+# Xcode
+xcuserdata
+project.xcworkspace
+
+# finder
+.DS_Store
+
+# python
+__pycache__
