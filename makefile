@@ -1,18 +1,17 @@
 
-_bld/kaleidoscope: kaleidoscope.cpp
-	mkdir -p _bld
-	clang++ \
-	`llvm-config --cppflags --ldflags --libs core jit native` \
-	-std=c++14 \
-	-g \
-	-Ofast \
-	-lz \
-	-lcurses \
-	$^ \
-	-o $@
+_bld/kaleidoscope: cc.sh kaleidoscope.cpp
+	./$^ -o $@
 
-.PHONY: llvm-config
+_bld/cjit: cc.sh cjit.cpp
+	./$^ -o $@
+
+.PHONY: all clean llvm-config
+
+all: _bld/kaleidoscope _bld/cjit
+
+clean:
+	rm -rf _bld/*
 
 llvm-config:
 	# display the compilation flags specified by llvm-config.
-	llvm-config --cppflags --ldflags --libs core jit native
+	llvm-config --cppflags --ldflags
