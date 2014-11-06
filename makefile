@@ -1,5 +1,5 @@
 
-_bld/kaleidoscope: cc.sh kaleidoscope.cpp
+_bld/kal: cc.sh kal.cpp
 	./$^ -o $@
 
 _bld/cjit: cc.sh cjit.cpp
@@ -7,7 +7,7 @@ _bld/cjit: cc.sh cjit.cpp
 
 .PHONY: all clean llvm-config
 
-all: _bld/kaleidoscope _bld/cjit
+all: _bld/kal _bld/cjit
 
 clean:
 	rm -rf _bld/*
