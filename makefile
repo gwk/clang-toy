@@ -5,9 +5,12 @@ _bld/kal: cc.sh kal.cpp
 _bld/cjit: cc.sh cjit.cpp
 	./$^ -o $@
 
+_bld/demangle: demangle.cpp
+	clang++ -std=c++14 -g $^ -o $@
+
 .PHONY: all clean llvm-config
 
-all: _bld/kal _bld/cjit
+all: _bld/kal _bld/cjit _bld/demangle
 
 clean:
 	rm -rf _bld/*
